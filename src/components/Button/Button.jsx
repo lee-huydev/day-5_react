@@ -13,7 +13,15 @@ const List = ({data})=> {
     {
         data.map((e,i)=> {
             number ++
-            return <li key={i}>{number}: {e.title}</li>
+            let color = '#ccc'
+            e.completed === true ? color = '#6EAE49' : color ='#EB6469'
+            return (
+            <li key={i}>
+                {number}/ {e.title}
+                <p style={color={color}}> 
+                  Status: {e.completed === true ? 'Done' : 'Not Finished'} 
+                </p>
+            </li>)
         })
     }
    </> 

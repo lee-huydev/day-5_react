@@ -21,6 +21,7 @@ function App() {
        setList(data.filter(e=> e.id <= 20))
      })
    })
+   console.log(list)
   //  Function handle event click
    const handleOnClick = (e) => {
       const text = e.target.innerText;
