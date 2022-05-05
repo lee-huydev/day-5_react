@@ -7,18 +7,20 @@ const Button = ({text,click, ...style}) => {
 }
 
 const List = ({data})=> {
-   let number = 0
    return data !== undefined 
    ? <>
     {
         data.map((e,i)=> {
-            number ++
-            let color = '#ccc'
-            e.completed === true ? color = '#6EAE49' : color ='#EB6469'
+            const color= {
+              color: '#ccc'
+            }
+            e.completed === true 
+            ? color.color = '#6EAE49' 
+            : color.color ='#EB6469'
             return (
             <li key={i}>
-                {number}/ {e.title}
-                <p style={color={color}}> 
+                {i +1}/ {e.title}
+                <p style={{...color}}> 
                   Status: {e.completed === true ? 'Done' : 'Not Finished'} 
                 </p>
             </li>)
