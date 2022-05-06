@@ -50,7 +50,7 @@ function App() {
    const handleSubmit = (e)=> {
       e.preventDefault()
       pass && cPass !== '' && pass === cPass 
-      ? (setIsTrue(true) || alert('Please scroll mouse down seen result!'))
+      ? (setIsTrue(true) || alert('Please scroll mouse down to see the result!'))
       : (setIsTrue(false) || alert('Password wrong, please again!'))
       setPass('')
       setCPass('')
