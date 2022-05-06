@@ -29,19 +29,19 @@ const List = ({data})=> {
    </> 
    : null
 }
-const Form =({ click, value, onChange, condition })=> {
-  const { pass, cPass } = value
-  const { onChangePass, onChangeCPass } = onChange
+const Form =({ onSubmit, value, onChange, condition })=> {
+  const { pass, cPass, username } = value
+  const { onChangePass, onChangeCPass, onChangeUser } = onChange
   return (
     <>
-    <form action="" className='form'>
+    <form action="" className='form' onSubmit={onSubmit}>
       <label htmlFor="">Username</label>
-      <input type="text" />
+      <input type="text" value={username} onChange={onChangeUser}/>
       <label htmlFor="">Password</label>
       <input type="password" value={pass} onChange={onChangePass} />
       <label htmlFor="">Confirm Password</label>
       <input type="password" value={cPass} onChange={onChangeCPass} />
-      <input type="submit" className='submit' onClick={click}/>
+      <input type="submit" className='submit'/>
     </form>
     {
       condition === true ? <h1>Welcome</h1> : null

@@ -45,14 +45,16 @@ function App() {
    // Function handle Form
    const [pass, setPass] = useState('')
    const [cPass, setCPass] = useState('')
+   const [username, setUsername] = useState('')
    const [isTrue, setIsTrue] = useState(false)
-   const handleForm = (e)=> {
+   const handleSubmit = (e)=> {
       e.preventDefault()
       pass && cPass !== '' && pass === cPass 
-      ? setIsTrue(true) 
+      ? (setIsTrue(true) || alert('Please scroll mouse down seen result!'))
       : (setIsTrue(false) || alert('Password wrong, please again!'))
       setPass('')
       setCPass('')
+      setUsername('')
    }
    // Handle onchange input
    const handleOnChange = {
@@ -62,9 +64,13 @@ function App() {
 
       onChangeCPass(e) {
          setCPass(e.target.value)
+      },
+
+      onChangeUser(e) {
+         setUsername(e.target.value)
       }
    }
-   const {onChangePass, onChangeCPass} = handleOnChange
+   const {onChangePass, onChangeCPass, onChangeUser} = handleOnChange
    return (
       <>
          <div className="btn-option">
@@ -87,10 +93,10 @@ function App() {
             </ul>
          </div>
          <Form
-          click={handleForm}
-          value={{pass, cPass}}
+          onSubmit={handleSubmit}
+          value={{pass, cPass, username}}
           condition={isTrue}
-          onChange = {{onChangePass, onChangeCPass}}
+          onChange = {{onChangePass, onChangeCPass, onChangeUser}}
           />
       </>
    );
