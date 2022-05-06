@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button, { List } from './components/Button/Button';
+import Button, { List, Form } from './components/Button/Button';
 
 import './App.css';
 
@@ -15,13 +15,12 @@ function App() {
             callback(list)
          });
    };
-  //  Function setList when load browser the first
+  //  Initialize value of list when browser load
    const [list, setList] = useState(()=> {
      getApi(data=> {
        setList(data.filter(e=> e.id <= 20))
      })
    })
-   console.log(list)
   //  Function handle event click
    const handleOnClick = (e) => {
       const text = e.target.innerText;
@@ -43,6 +42,29 @@ function App() {
             break;
       }
    };
+   // Function handle Form
+   const [pass, setPass] = useState('')
+   const [cPass, setCPass] = useState('')
+   const [isTrue, setIsTrue] = useState(false)
+   const handleForm = (e)=> {
+      e.preventDefault()
+      pass && cPass !== '' && pass === cPass 
+      ? setIsTrue(true) 
+      : (setIsTrue(false) || alert('Password wrong, please again!'))
+      setPass('')
+      setCPass('')
+   }
+   // Handle onchange input
+   const handleOnChange = {
+      onChangePass(e) {
+         setPass(e.target.value)
+      },
+
+      onChangeCPass(e) {
+         setCPass(e.target.value)
+      }
+   }
+   const {onChangePass, onChangeCPass} = handleOnChange
    return (
       <>
          <div className="btn-option">
@@ -64,6 +86,12 @@ function App() {
                <List data={list} />
             </ul>
          </div>
+         <Form
+          click={handleForm}
+          value={{pass, cPass}}
+          condition={isTrue}
+          onChange = {{onChangePass, onChangeCPass}}
+          />
       </>
    );
 }

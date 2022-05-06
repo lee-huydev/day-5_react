@@ -24,3 +24,27 @@ li {
     border: 1px solid #333;
     font-family: 'Open Sans', sans-serif;
 }
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 50px auto;
+}
+input {
+    padding: 8px 15px;
+    font-size: 18px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+.submit {
+    width: 100px;
+    background-color: #6EAE49;
+    color: white;
+    margin: auto;
+    font-family: 'Open Sans', sans-serif;
+}
+.submit:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
